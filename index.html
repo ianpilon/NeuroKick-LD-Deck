@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroKick | For L&D Leaders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            page-break-after: always;
+            scroll-snap-align: start;
+            cursor: pointer;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+        }
+
+        /* Slide counter */
+        .slide-counter {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            z-index: 1000;
+        }
+
+        /* Navigation hint */
+        .nav-hint {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            z-index: 1000;
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: #FF6B35;
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        @media print {
+            .slide {
+                page-break-after: always;
+            }
+            .slide-counter, .nav-hint, .progress-bar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Slide Counter -->
+    <div class="slide-counter" id="slideCounter">1 / 18</div>
+
+    <!-- Navigation Hint -->
+    <div class="nav-hint">Click or press arrow keys to navigate</div>
+
+    <!-- Slide 1: Title -->
+    <div class="slide bg-gradient-to-br from-gray-900 to-gray-800">
+        <div class="text-center px-12 max-w-5xl">
+            <div class="text-7xl font-bold mb-6">
+                <span class="text-white">Neuro</span><span class="text-orange-500">Kick</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-8 opacity-90">
+                Finally Prove Your<br/>
+                Leadership Programs Work
+            </h1>
+            <p class="text-2xl text-gray-400">
+                For L&D Leaders Who Are Tired of Defending Their Budget
+            </p>
+        </div>
+    </div>
+
+    <!-- Slide 2: The CFO Question -->
+    <div class="slide">
+        <div class="max-w-5xl px-12 w-full">
+            <h2 class="text-3xl font-bold text-gray-500 mb-8 text-center">
+                You know this conversation...
+            </h2>
+
+            <div class="space-y-6 max-w-3xl mx-auto">
+                <div class="bg-gray-100 p-8 rounded-2xl">
+                    <p class="text-2xl text-gray-700">
+                        <span class="font-bold text-gray-900">CFO:</span> "We spent $2M on leadership training. Is it working?"
+                    </p>
+                </div>
+
+                <div class="bg-orange-50 p-8 rounded-2xl border-2 border-orange-200">
+                    <p class="text-2xl text-gray-700">
+                        <span class="font-bold text-orange-600">You:</span> "94% completion rate, 4.2/5 satisfaction score..."
+                    </p>
+                </div>
+
+                <div class="bg-gray-100 p-8 rounded-2xl">
+                    <p class="text-2xl text-gray-700">
+                        <span class="font-bold text-gray-900">CFO:</span> "That's not what I asked."
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <p class="text-2xl text-gray-600">
+                    The uncomfortable silence that follows.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: The Real Problem -->
+    <div class="slide bg-orange-500">
+        <div class="max-w-5xl px-12 w-full text-center text-white">
+            <h2 class="text-4xl font-bold mb-12">
+                You're stuck measuring the wrong things
+            </h2>
+
+            <div class="grid grid-cols-2 gap-8 max-w-3xl mx-auto">
+                <div class="bg-white/20 p-8 rounded-2xl text-left">
+                    <div class="text-4xl mb-4">Completion rates</div>
+                    <div class="text-xl text-orange-100">Meaningless to the business</div>
+                </div>
+
+                <div class="bg-white/20 p-8 rounded-2xl text-left">
+                    <div class="text-4xl mb-4">Satisfaction scores</div>
+                    <div class="text-xl text-orange-100">Doesn't prove behavior change</div>
+                </div>
+
+                <div class="bg-white/20 p-8 rounded-2xl text-left">
+                    <div class="text-4xl mb-4">23% adoption</div>
+                    <div class="text-xl text-orange-100">Managers don't use your tools</div>
+                </div>
+
+                <div class="bg-white/20 p-8 rounded-2xl text-left">
+                    <div class="text-4xl mb-4">No connection</div>
+                    <div class="text-xl text-orange-100">To business outcomes</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: The Blame -->
+    <div class="slide bg-gray-50">
+        <div class="max-w-5xl px-12 w-full text-center">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-12 leading-tight">
+                When managers fail and teams leave,<br/>
+                <span class="gradient-text">L&D gets blamed.</span>
+            </h2>
+
+            <p class="text-3xl text-gray-600 mb-8">
+                But you had no early warning system.
+            </p>
+
+            <p class="text-2xl text-gray-500">
+                Exit interviews say "my manager"—but by then it's too late.
+            </p>
+        </div>
+    </div>
+
+    <!-- Slide 5: The Industry Average -->
+    <div class="slide">
+        <div class="max-w-5xl px-12 w-full text-center">
+            <h2 class="text-3xl font-bold text-gray-500 mb-8">
+                Here's why your tools aren't working
+            </h2>
+
+            <div class="text-9xl font-bold gradient-text mb-8">23%</div>
+
+            <h3 class="text-4xl font-bold text-gray-900 mb-6">
+                Industry average adoption rate
+            </h3>
+
+            <p class="text-2xl text-gray-600 max-w-3xl mx-auto">
+                Managers don't trust tools that feel like surveillance.<br/>
+                <span class="font-bold">77% of your investment is going unused.</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- Slide 6: The Insight -->
+    <div class="slide bg-gradient-to-br from-gray-900 to-gray-800">
+        <div class="max-w-5xl px-12 w-full text-center text-white">
+            <h2 class="text-3xl font-bold text-orange-500 mb-8">
+                What if you could measure what actually matters?
+            </h2>
+
+            <p class="text-4xl md:text-5xl font-bold leading-tight mb-12">
+                "Teams with engaged managers have<br/>
+                <span class="text-orange-500">30% lower turnover.</span>"
+            </p>
+
+            <p class="text-2xl text-gray-400">
+                That's the metric your CFO cares about.<br/>
+                That's what we help you prove.
+            </p>
+        </div>
+    </div>
+
+    <!-- Slide 7: Introducing NeuroKick -->
+    <div class="slide">
+        <div class="max-w-5xl px-12 w-full text-center">
+            <h2 class="text-3xl font-bold text-gray-500 mb-4">
+                Introducing
+            </h2>
+
+            <div class="text-7xl font-bold mb-6">
+                <span class="text-gray-900">Neuro</span><span class="text-orange-500">Kick</span>
+            </div>
+
+            <h3 class="text-4xl font-bold text-gray-900 mb-8">
+                Leadership Intelligence for L&D
+            </h3>
+
+            <p class="text-2xl text-gray-600 max-w-3xl mx-auto">
+                Track manager engagement with development in real-time.<br/>
+                Connect it to business outcomes like retention.<br/>
+                <span class="text-orange-500 font-bold">Finally prove your programs work.</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- Slide 8: The Key Numbers -->
+    <div class="slide bg-orange-500">
+        <div class="max-w-5xl px-12 w-full text-white">
+            <h2 class="text-4xl font-bold mb-16 text-center">
+                The numbers that change everything
+            </h2>
+
+            <div class="grid grid-cols-3 gap-8 text-center">
+                <div>
+                    <div class="text-7xl font-bold mb-4">67%</div>
+                    <div class="text-2xl">Manager Adoption</div>
+                    <div class="text-lg text-orange-200 mt-2">(vs. 23% industry average)</div>
+                </div>
+
+                <div>
+                    <div class="text-7xl font-bold mb-4">18x</div>
+                    <div class="text-2xl">ROI Return</div>
+                    <div class="text-lg text-orange-200 mt-2">(2.6-month payback)</div>
+                </div>
+
+                <div>
+                    <div class="text-7xl font-bold mb-4">30%</div>
+                    <div class="text-2xl">Turnover Reduction</div>
+                    <div class="text-lg text-orange-200 mt-2">(in management-driven attrition)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: What You Get - Part 1 -->
+    <div class="slide bg-gray-50">
+        <div class="max-w-5xl px-12 w-full">
+            <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">
+                What NeuroKick gives you
+            </h2>
+
+            <div class="grid grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                    <div class="w-16 h-16 bg-orange-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mb-6">1</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Prove Training ROI to the Board</h3>
+                    <ul class="space-y-3 text-lg text-gray-600">
+                        <li>Board-ready metrics</li>
+                        <li>Connect engagement to retention to results</li>
+                        <li>Stop defending, start showing impact</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                    <div class="w-16 h-16 bg-orange-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mb-6">2</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">67% Adoption Rate</h3>
+                    <ul class="space-y-3 text-lg text-gray-600">
+                        <li>3x industry average</li>
+                        <li>Privacy-first design builds trust</li>
+                        <li>Usage proves your programs work</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                    <div class="w-16 h-16 bg-orange-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mb-6">3</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Early Warning System</h3>
+                    <ul class="space-y-3 text-lg text-gray-600">
+                        <li>See who's engaging vs. disengaging</li>
+                        <li>Intervene before crises happen</li>
+                        <li>Focus resources where needed</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                    <div class="w-16 h-16 bg-orange-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mb-6">4</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Elevate Your Strategic Role</h3>
+                    <ul class="space-y-3 text-lg text-gray-600">
+                        <li>From "training admin" to "strategic partner"</li>
+                        <li>Present data executives care about</li>
+                        <li>Own the solution to the #1 people problem</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: How It Works -->
+    <div class="slide">
+        <div class="max-w-5xl px-12 w-full">
+            <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">
+                How it works
+            </h2>
+
+            <div class="space-y-6">
+                <div class="flex items-start gap-6">
+                    <div class="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center text-xl font-bold flex-shrink-0">1</div>
+                    <div class="bg-gray-50 p-6 rounded-xl flex-1">
+                        <div class="text-xl font-bold text-gray-900 mb-2">Managers get private development tools</div>
+                        <div class="text-gray-600">Personalized, confidential—their data never leaves their dashboard.</div>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-6">
+                    <div class="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center text-xl font-bold flex-shrink-0">2</div>
+                    <div class="bg-gray-50 p-6 rounded-xl flex-1">
+                        <div class="text-xl font-bold text-gray-900 mb-2">System tracks WHO is engaging (not WHAT)</div>
+                        <div class="text-gray-600">You see engagement patterns, not personal development details.</div>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-6">
+                    <div class="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center text-xl font-bold flex-shrink-0">3</div>
+                    <div class="bg-gray-50 p-6 rounded-xl flex-1">
+                        <div class="text-xl font-bold text-gray-900 mb-2">Real-time patterns: who's developing, who's disengaging</div>
+                        <div class="text-gray-600">Early warning signals before problems become crises.</div>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-6">
+                    <div class="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center text-xl font-bold flex-shrink-0">4</div>
+                    <div class="bg-gray-50 p-6 rounded-xl flex-1">
+                        <div class="text-xl font-bold text-gray-900 mb-2">Prove ROI with business metrics</div>
+                        <div class="text-gray-600">"Teams with engaged managers have 30% lower turnover."</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 11: The Privacy Promise -->
+    <div class="slide bg-gray-50">
+        <div class="max-w-5xl px-12 w-full">
+            <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">
+                Privacy drives adoption. Adoption drives results.
+            </h2>
+
+            <div class="grid grid-cols-2 gap-12">
+                <div class="bg-green-50 p-8 rounded-2xl border-2 border-green-500">
+                    <h3 class="text-2xl font-bold text-green-700 mb-6">What you see</h3>
+                    <ul class="space-y-3 text-lg text-gray-700">
+                        <li>Manager engagement rates (67% active)</li>
+                        <li>Time invested in development</li>
+                        <li>Consistency and trends</li>
+                        <li>Early warning signals</li>
+                        <li>Correlation to business outcomes</li>
+                    </ul>
+                </div>
+
+                <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-400">
+                    <h3 class="text-2xl font-bold text-red-600 mb-6">What stays private</h3>
+                    <ul class="space-y-3 text-lg text-gray-700">
+                        <li>Individual assessment scores</li>
+                        <li>Personal growth areas</li>
+                        <li>Coaching conversations</li>
+                        <li>Performance data</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <p class="text-2xl text-gray-700">
+                    <span class="font-bold">This is why we get 67% adoption.</span><br/>
+                    Managers trust it because it's built for them, not against them.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 12: The ROI Story -->
+    <div class="slide">
+        <div class="max-w-5xl px-12 w-full">
+            <h2 class="text-4xl font-bold text-gray-900 mb-8 text-center">
+                The ROI your CFO wants to see
+            </h2>
+
+            <div class="text-center text-gray-500 mb-8">Example: 250-manager company</div>
+
+            <div class="grid grid-cols-2 gap-8 mb-8">
+                <div class="bg-gray-100 p-8 rounded-2xl">
+                    <h3 class="text-xl font-bold text-gray-500 mb-6">Current State</h3>
+                    <ul class="space-y-4 text-lg text-gray-700">
+                        <li>$2M L&D budget annually</li>
+                        <li>23% adoption of tools</li>
+                        <li>Can't prove business outcomes</li>
+                        <li>Exit interviews: "my manager"</li>
+                    </ul>
+                </div>
+
+                <div class="bg-orange-50 p-8 rounded-2xl border-2 border-orange-500">
+                    <h3 class="text-xl font-bold text-orange-600 mb-6">With NeuroKick</h3>
+                    <ul class="space-y-4 text-lg text-gray-700">
+                        <li><span class="font-bold">$95,000/year</span> investment</li>
+                        <li><span class="font-bold">67%</span> manager adoption</li>
+                        <li><span class="font-bold">25-30%</span> turnover reduction</li>
+                        <li><span class="font-bold">$2.2M</span> annual savings</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-gray-900 text-white p-8 rounded-2xl text-center">
+                <p class="text-xl"><span class="text-orange-500 font-bold">18x ROI</span> with a <span class="text-orange-500 font-bold">2.6-month</span> payback period</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 13: Your Board Presentation -->
+    <div class="slide bg-gradient-to-br from-gray-900 to-gray-800">
+        <div class="max-w-5xl px-12 w-full text-center text-white">
+            <h2 class="text-3xl font-bold text-orange-500 mb-8">
+                Imagine walking into the boardroom and saying:
+            </h2>
+
+            <div class="bg-white/10 p-12 rounded-3xl mb-12">
+                <p class="text-2xl md:text-3xl leading-relaxed italic">
+                    "Our leadership development investment is working. <span class="text-orange-500">67% of managers</span> are actively developing—3x industry average. Teams with engaged managers have <span class="text-orange-500">30% lower turnover</span>, saving us <span class="text-orange-500">$2.2M annually</span>. That's an <span class="text-orange-500">18x return</span> on our $95K platform investment."
+                </p>
+            </div>
+
+            <p class="text-xl text-gray-400">
+                That's the conversation NeuroKick enables.
+            </p>
+        </div>
+    </div>
+
+    <!-- Slide 14: vs. Traditional Tools -->
+    <div class="slide">
+        <div class="max-w-5xl px-12 w-full">
+            <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">
+                What makes NeuroKick different
+            </h2>
+
+            <div class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-gray-100 p-6 rounded-xl text-center">
+                        <div class="text-gray-500 text-sm mb-2">Traditional L&D Tools</div>
+                        <div class="text-xl font-bold text-gray-700">Track content completion</div>
+                    </div>
+                    <div class="bg-orange-50 p-6 rounded-xl text-center border-2 border-orange-500">
+                        <div class="text-orange-500 text-sm mb-2">NeuroKick</div>
+                        <div class="text-xl font-bold text-gray-900">Track development engagement</div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-gray-100 p-6 rounded-xl text-center">
+                        <div class="text-xl font-bold text-gray-700">23% adoption (surveillance anxiety)</div>
+                    </div>
+                    <div class="bg-orange-50 p-6 rounded-xl text-center border-2 border-orange-500">
+                        <div class="text-xl font-bold text-gray-900">67% adoption (privacy-first)</div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-gray-100 p-6 rounded-xl text-center">
+                        <div class="text-xl font-bold text-gray-700">Can't connect to business outcomes</div>
+                    </div>
+                    <div class="bg-orange-50 p-6 rounded-xl text-center border-2 border-orange-500">
+                        <div class="text-xl font-bold text-gray-900">Proves ROI with retention data</div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-gray-100 p-6 rounded-xl text-center">
+                        <div class="text-xl font-bold text-gray-700">Lagging metrics (annual reviews)</div>
+                    </div>
+                    <div class="bg-orange-50 p-6 rounded-xl text-center border-2 border-orange-500">
+                        <div class="text-xl font-bold text-gray-900">Leading indicators (real-time)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 15: Customer Success -->
+    <div class="slide bg-gray-50">
+        <div class="max-w-5xl px-12 w-full">
+            <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">
+                Real results from L&D leaders like you
+            </h2>
+
+            <div class="bg-white p-10 rounded-2xl shadow-lg mb-8">
+                <div class="text-gray-500 mb-6">Company with 300 Managers | $3M L&D Budget</div>
+
+                <div class="grid grid-cols-4 gap-6 mb-8">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-orange-500">71%</div>
+                        <div class="text-gray-600">Adoption</div>
+                        <div class="text-sm text-gray-400">(was 18%)</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-orange-500">28%</div>
+                        <div class="text-gray-600">Turnover reduction</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-orange-500">$2.4M</div>
+                        <div class="text-gray-600">Saved</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-orange-500">40%</div>
+                        <div class="text-gray-600">Budget increase</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-orange-50 p-8 rounded-2xl border-l-4 border-orange-500">
+                <p class="text-xl text-gray-700 italic mb-4">
+                    "For the first time in my career, I can walk into the boardroom and show exactly how our leadership investment drives business results. NeuroKick changed the conversation from 'justify your spend' to 'how can we invest more?'"
+                </p>
+                <p class="text-gray-500 font-bold">— VP of Learning & Development</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 16: Timeline -->
+    <div class="slide">
+        <div class="max-w-5xl px-12 w-full">
+            <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">
+                Time to value
+            </h2>
+
+            <div class="space-y-6">
+                <div class="flex items-center gap-6">
+                    <div class="w-32 text-right">
+                        <div class="text-2xl font-bold text-orange-500">Week 1-2</div>
+                    </div>
+                    <div class="w-4 h-4 bg-orange-500 rounded-full"></div>
+                    <div class="flex-1 bg-gray-50 p-6 rounded-xl">
+                        <div class="font-bold text-gray-900">Setup & Integration</div>
+                        <div class="text-gray-600">Connect to LMS/HRIS, configure privacy, onboard L&D team</div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-6">
+                    <div class="w-32 text-right">
+                        <div class="text-2xl font-bold text-orange-500">Week 3-4</div>
+                    </div>
+                    <div class="w-4 h-4 bg-orange-500 rounded-full"></div>
+                    <div class="flex-1 bg-gray-50 p-6 rounded-xl">
+                        <div class="font-bold text-gray-900">Manager Rollout</div>
+                        <div class="text-gray-600">60%+ adoption typically in first 30 days</div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-6">
+                    <div class="w-32 text-right">
+                        <div class="text-2xl font-bold text-orange-500">Month 2-3</div>
+                    </div>
+                    <div class="w-4 h-4 bg-orange-500 rounded-full"></div>
+                    <div class="flex-1 bg-gray-50 p-6 rounded-xl">
+                        <div class="font-bold text-gray-900">Intelligence & Insights</div>
+                        <div class="text-gray-600">Real-time dashboard, early warning signals active</div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-6">
+                    <div class="w-32 text-right">
+                        <div class="text-2xl font-bold text-orange-500">Month 4+</div>
+                    </div>
+                    <div class="w-4 h-4 bg-orange-500 rounded-full"></div>
+                    <div class="flex-1 bg-gray-50 p-6 rounded-xl">
+                        <div class="font-bold text-gray-900">ROI Proof</div>
+                        <div class="text-gray-600">Board-ready metrics, engagement-to-retention correlation</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <p class="text-xl text-gray-600">
+                    <span class="font-bold">First value in 30 days.</span> Measurable ROI in 90 days.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 17: The Transformation -->
+    <div class="slide bg-orange-500">
+        <div class="max-w-5xl px-12 w-full text-white text-center">
+            <h2 class="text-4xl font-bold mb-16">
+                Your transformation
+            </h2>
+
+            <div class="grid grid-cols-2 gap-12 max-w-3xl mx-auto">
+                <div>
+                    <div class="text-2xl text-orange-200 mb-4">From</div>
+                    <div class="text-3xl font-bold">"Training Administrator"</div>
+                    <div class="mt-4 text-xl text-orange-100">Defending your budget with completion rates</div>
+                </div>
+
+                <div>
+                    <div class="text-2xl text-orange-200 mb-4">To</div>
+                    <div class="text-3xl font-bold">"Strategic Business Partner"</div>
+                    <div class="mt-4 text-xl text-orange-100">Proving ROI with business metrics</div>
+                </div>
+            </div>
+
+            <div class="mt-16">
+                <p class="text-2xl">
+                    Stop defending your L&D budget.<br/>
+                    <span class="font-bold">Start proving it works.</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 18: Next Steps -->
+    <div class="slide bg-gradient-to-br from-gray-900 to-gray-800">
+        <div class="text-center px-12 max-w-4xl text-white">
+            <div class="text-7xl font-bold mb-8">
+                <span class="text-white">Neuro</span><span class="text-orange-500">Kick</span>
+            </div>
+
+            <h2 class="text-3xl font-bold mb-12">
+                Ready to prove your leadership programs work?
+            </h2>
+
+            <div class="grid grid-cols-3 gap-6 mb-12">
+                <div class="bg-white/10 p-6 rounded-2xl">
+                    <div class="text-orange-500 font-bold mb-2">Option 1</div>
+                    <div class="text-xl font-bold mb-2">See Your ROI</div>
+                    <div class="text-gray-400 text-sm">Custom analysis for your org</div>
+                </div>
+                <div class="bg-white/10 p-6 rounded-2xl">
+                    <div class="text-orange-500 font-bold mb-2">Option 2</div>
+                    <div class="text-xl font-bold mb-2">Request a Demo</div>
+                    <div class="text-gray-400 text-sm">See Leadership Intelligence in action</div>
+                </div>
+                <div class="bg-white/10 p-6 rounded-2xl">
+                    <div class="text-orange-500 font-bold mb-2">Option 3</div>
+                    <div class="text-xl font-bold mb-2">Start a Pilot</div>
+                    <div class="text-gray-400 text-sm">30-day proof of concept</div>
+                </div>
+            </div>
+
+            <div class="space-y-3 text-xl">
+                <div>neurokick.ai</div>
+                <div class="text-gray-400">Ian Pilon, Founder</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const totalSlides = 18;
+        let currentSlide = 1;
+
+        // Get all slides and add IDs
+        const slides = document.querySelectorAll('.slide');
+        slides.forEach((slide, index) => {
+            slide.id = `slide-${index + 1}`;
+            slide.dataset.slide = index + 1;
+        });
+
+        // Update slide counter and progress bar
+        function updateUI() {
+            document.getElementById('slideCounter').textContent = `${currentSlide} / ${totalSlides}`;
+            document.getElementById('progressBar').style.width = `${(currentSlide / totalSlides) * 100}%`;
+        }
+
+        // Navigate to specific slide
+        function goToSlide(slideNum) {
+            if (slideNum < 1) slideNum = 1;
+            if (slideNum > totalSlides) slideNum = totalSlides;
+
+            currentSlide = slideNum;
+            const targetSlide = document.getElementById(`slide-${slideNum}`);
+            if (targetSlide) {
+                targetSlide.scrollIntoView({ behavior: 'smooth' });
+                updateUI();
+            }
+        }
+
+        // Next slide
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                goToSlide(currentSlide + 1);
+            }
+        }
+
+        // Previous slide
+        function prevSlide() {
+            if (currentSlide > 1) {
+                goToSlide(currentSlide - 1);
+            }
+        }
+
+        // Click handler - click anywhere to advance
+        document.addEventListener('click', function(e) {
+            const clickX = e.clientX;
+            const screenWidth = window.innerWidth;
+
+            if (clickX < screenWidth * 0.2) {
+                prevSlide();
+            } else {
+                nextSlide();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            switch(e.key) {
+                case 'ArrowRight':
+                case 'ArrowDown':
+                case ' ':
+                case 'Enter':
+                case 'PageDown':
+                    e.preventDefault();
+                    nextSlide();
+                    break;
+                case 'ArrowLeft':
+                case 'ArrowUp':
+                case 'PageUp':
+                case 'Backspace':
+                    e.preventDefault();
+                    prevSlide();
+                    break;
+                case 'Home':
+                    e.preventDefault();
+                    goToSlide(1);
+                    break;
+                case 'End':
+                    e.preventDefault();
+                    goToSlide(totalSlides);
+                    break;
+            }
+        });
+
+        // Track scroll position to update current slide
+        let scrollTimeout;
+        window.addEventListener('scroll', function() {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(function() {
+                let maxVisibility = 0;
+                let visibleSlide = 1;
+
+                slides.forEach((slide, index) => {
+                    const rect = slide.getBoundingClientRect();
+                    const visibility = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+
+                    if (visibility > maxVisibility) {
+                        maxVisibility = visibility;
+                        visibleSlide = index + 1;
+                    }
+                });
+
+                if (visibleSlide !== currentSlide) {
+                    currentSlide = visibleSlide;
+                    updateUI();
+                }
+            }, 100);
+        });
+
+        // Initialize
+        updateUI();
+    </script>
+</body>
+</html>
